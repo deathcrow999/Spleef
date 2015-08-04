@@ -19,6 +19,7 @@ use pocketmine\level\Level;
 
 class Main extends PluginBase implements Listener{
 
+    public $sec = 20;
     public function onLoad(){
         $this->getLogger()->info(TextFormat::YELLOW . "Loading Spleef by Fycarman");
     }
@@ -26,8 +27,9 @@ class Main extends PluginBase implements Listener{
     public function onEnable(){
         $this->getLogger()->info(TextFormat::GREEN . "Spleef by Fycarman loaded!");
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        $this->saveDefaultConfig();
-    }
+        $this->saveDefaultConfig();    
+        $this->getServer()->getScheduler()->scheduleRepeatingTask(new Timer($this), 20);
+}
 
     public function onDisable(){
         $this->getLogger()->info(TextFormat::RED . "Spleef by Fycarman disabled");
