@@ -1,6 +1,6 @@
 <?php
 
-namespace Task;
+namespace Spleef;
 
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\scheduler\PluginTask;
