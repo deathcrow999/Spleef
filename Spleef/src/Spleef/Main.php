@@ -34,14 +34,6 @@ class Main extends PluginBase implements Listener{
         $this->getConfig()->save();
     }
 
-    public function onVoidLoop(PlayerMoveEvent $event){
-        if($event->getTo()->getFloorY() < 2){
-            $level = $this->getDefaultLevel()->getSpawn();
-            $player = $event->getPlayer();
-            $player->teleport($level);
-        }
-   }
-
     public function onTouch(PlayerInteractEvent $event){
         if($event->getItem()->getId() == 277){
             $event->getBlock()->getLevel()->setBlock(new Vector3($event->getBlock()->getX(),$event->getBlock()->getY(),$event->getBlock()->getZ()), Block::get(0));
