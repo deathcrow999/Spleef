@@ -15,10 +15,10 @@ public function __construct($plugin){
 
   public function onRun($tick){ //ogni secondo
     $this->plugin->sec -= 1;
-    if($this->plugin->min => 20){
+    if($this->plugin->sec => 20){
       foreach($this->plugin->getServer()->getPlayers() as $p){
         $p->sendMessage("Game starts in ".$this->plugin->sec." seconds");
       }
-    }elseif($this->plugin->min === 0){
+    }elseif($this->plugin->sec === 0){
   }
 }
