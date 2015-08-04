@@ -1,6 +1,6 @@
 <?php
 
-namespace Spleef;
+namespace Timer;
 
 use pocketmine\scheduler\PluginTask;
 use pocketmine\utils\TextFormat;
