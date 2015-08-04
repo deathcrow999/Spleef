@@ -16,8 +16,8 @@ public function __construct($plugin){
   public function onRun($tick){ //ogni secondo
     $this->plugin->sec -= 1;
     if($this->plugin->sec => 20){
-      foreach($this->plugin->getServer()->getPlayers() as $p){
-        $p->sendMessage("Game starts in ".$this->plugin->sec." seconds");
+      foreach($this->getLevelByName($this->getConfig()->get("level"))->getPlayer() as $p){
+        $p->sendMessage("Spleef starts in ".$this->plugin->sec." seconds");
       }
     }elseif($this->plugin->sec === 0){
   }
