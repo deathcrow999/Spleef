@@ -8,7 +8,7 @@ use pocketmine\Player;
 use pocketmine\item\Item;
 use pocketmine\inventory\Inventory;
 
-class Task extends PluginTask{
+class Timer extends PluginTask{
 
 
 public function __construct($plugin){
