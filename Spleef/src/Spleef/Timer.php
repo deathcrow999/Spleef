@@ -28,7 +28,7 @@ public function __construct($plugin){
       $p->getInventory()->addItem(277, 1);
        }else{
       if(count($this->getServer()->getLevelByName($this->getConfig()->get("level"))->getPlayers()) as $p < 1){
-      $->sendMessage(TextFormat::RED . "Can't start game,there aren't enough player");
+      $p->sendMessage(TextFormat::RED . "Can't start game,there aren't enough player");
       $level = $this->getServer()->getDefaultSpawn();
       $p->teleport($level);
       }
