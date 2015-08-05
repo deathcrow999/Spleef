@@ -4,6 +4,9 @@ namespace Timer;
 
 use pocketmine\scheduler\PluginTask;
 use pocketmine\utils\TextFormat;
+use pocketmine\Player;
+use pocketmine\item\Item;
+use pocketmine\inventory\Inventory;
 
 class Task extends PluginTask{
 
@@ -22,9 +25,13 @@ public function __construct($plugin){
     }elseif($this->plugin->sec === 0){
      if(count($this->getServer()->getLevelByName($this->getConfig()->get("level"))->getPlayers()) => 2){
       $player->sendPopup(TextFormat::GREEN . "Spleef started! Have fun!");
-//TODO give item
+      $player->getInventory()->addItem(277, 1);
        }else{
-//TODO can't start & teleport to lobby
+      if(count($this->getServer()->getLevelByName($this->getConfig()->get("level"))->getPlayers()) < 1){
+      $player->sendMessage(TextFormat::RED . "Can't start game,there aren't enough player");
+      $level = $this->getServer()->getDefaultSpawn();
+      $player->teleport($level);
+      }
     }
   }
 }
