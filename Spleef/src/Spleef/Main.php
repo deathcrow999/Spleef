@@ -28,7 +28,7 @@ class Main extends PluginBase implements Listener{
         $this->getLogger()->info(TextFormat::GREEN . "Spleef by Fycarman loaded!");
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->saveDefaultConfig();    
-        $this->getServer()->getScheduler()->scheduleRepeatingTask(new Timer($this), 20);
+        $this->getServer()->getScheduler()->scheduleRepeatingTask(new Timer($this), 20);
 }
 
     public function onDisable(){
@@ -37,19 +37,17 @@ class Main extends PluginBase implements Listener{
     }
 
     public function onTouch(PlayerInteractEvent $event){
-        if($event->getItem()->getId() == 277){
-            $event->getBlock()->getLevel()->setBlock(new Vector3($event->getBlock()->getX(),$event->getBlock()->getY(),$event->getBlock()->getZ()), Block::get(0));
+        if($event->getItem()->getId() === 277){
+            $event->getBlock()->getLevel()->setBlock($event->getBlock(), Block::get(0));
         }
     }
 
     public function onDeath(PlayerDeathEvent $event){
-        $level = $this->getDefaultLevel()->getSpawn();
+        $level = $this->getServer()->getDefaultLevel()->getSafeSpawn();
         $player = $event->getPlayer();
         $player->teleport($level);
 
     if(count($this->getServer()->getLevelByName($this->getConfig()->get("level"))->getPlayers()) === 1){
-    $player = $event->getPlayer();
-    $level = $this->getDefaultLevel()->getSpawn();
     $player->teleport($level);
 }
     if(count($this->getServer()->getLevelByName($this->getConfig()->get("level"))->getPlayers()) === 0){
